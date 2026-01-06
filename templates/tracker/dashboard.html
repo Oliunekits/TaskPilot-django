@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · TaskPilot{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <div>
+    <h1 class="h3 mb-0">Dashboard</h1>
+    <div class="text-muted">Коротка статистика по твоїх задачах</div>
+  </div>
+  <a class="btn btn-primary" href="{% url 'project_create' %}">+ Новий проєкт</a>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card stat-card p-3 shadow-sm">
+      <div class="text-muted">Проєкти</div>
+      <div class="display-6">{{ projects_count }}</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card p-3 shadow-sm">
+      <div class="text-muted">Усього задач</div>
+      <div class="display-6">{{ tasks_total }}</div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card stat-card p-3 shadow-sm">
+      <div class="text-muted">To Do</div>
+      <div class="display-6">{{ tasks_todo }}</div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card stat-card p-3 shadow-sm">
+      <div class="text-muted">In Progress</div>
+      <div class="display-6">{{ tasks_in_progress }}</div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card stat-card p-3 shadow-sm">
+      <div class="text-muted">Done</div>
+      <div class="display-6">{{ tasks_done }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+    <span class="fw-semibold">Останні оновлені задачі</span>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'project_list' %}">До проєктів</a>
+  </div>
+  <div class="list-group list-group-flush">
+    {% for t in recent_tasks %}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between"
+         href="{% url 'project_detail' t.project.id %}">
+        <span>
+          <span class="fw-semibold">{{ t.title }}</span>
+          <span class="text-muted small">— {{ t.project.name }}</span>
+        </span>
+        <span class="badge text-bg-light border">{{ t.get_status_display }}</span>
+      </a>
+    {% empty %}
+      <div class="p-3 text-muted">Поки немає задач. Створи проєкт і додай першу задачу 🙂</div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

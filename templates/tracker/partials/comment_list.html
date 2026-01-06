@@ -1,0 +1,12 @@
+<div class="d-grid gap-2">
+  {% for c in comments %}
+    <div class="border rounded p-2">
+      <div class="small text-muted">
+        <span class="fw-semibold">{{ c.author.username }}</span> · {{ c.created_at|date:"d.m.Y H:i" }}
+      </div>
+      <div>{{ c.body }}</div>
+    </div>
+  {% empty %}
+    <div class="text-muted small">Поки немає коментарів</div>
+  {% endfor %}
+</div>

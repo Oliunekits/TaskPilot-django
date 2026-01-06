@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Delete · TaskPilot{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-6">
+    <div class="card p-4 shadow-sm">
+      <h1 class="h5">Підтвердження видалення</h1>
+      <p class="text-muted">Точно видалити: <span class="fw-semibold">{{ object }}</span>?</p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="d-flex gap-2">
+          <button class="btn btn-danger">Видалити</button>
+          <a class="btn btn-outline-secondary" href="{{ request.META.HTTP_REFERER|default:'/' }}">Скасувати</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

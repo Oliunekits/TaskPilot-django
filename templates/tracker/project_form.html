@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Project · TaskPilot{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card p-4 shadow-sm">
+      <h1 class="h4 mb-3">{{ view.object|default:"Новий проєкт" }}</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary">Зберегти</button>
+          <a class="btn btn-outline-secondary" href="{% url 'project_list' %}">Скасувати</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

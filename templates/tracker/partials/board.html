@@ -1,0 +1,40 @@
+<div class="row g-3">
+  <div class="col-lg-4">
+    <div class="board-col card shadow-sm">
+      <div class="card-header bg-white fw-semibold">To Do</div>
+      <div class="card-body d-grid gap-2">
+        {% for t in tasks %}
+          {% if t.status == 'todo' %}
+            {% include "tracker/partials/task_card.html" with t=t %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="board-col card shadow-sm">
+      <div class="card-header bg-white fw-semibold">In Progress</div>
+      <div class="card-body d-grid gap-2">
+        {% for t in tasks %}
+          {% if t.status == 'in_progress' %}
+            {% include "tracker/partials/task_card.html" with t=t %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="board-col card shadow-sm">
+      <div class="card-header bg-white fw-semibold">Done</div>
+      <div class="card-body d-grid gap-2">
+        {% for t in tasks %}
+          {% if t.status == 'done' %}
+            {% include "tracker/partials/task_card.html" with t=t %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

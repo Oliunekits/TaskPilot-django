@@ -1,0 +1,6 @@
+body { background: #f7f8fb; }
+.card-hover:hover { transform: translateY(-1px); transition: 0.15s; }
+.stat-card { border: 1px solid rgba(0,0,0,0.06); }
+.board-col { border: 1px solid rgba(0,0,0,0.06); }
+.task-card { border: 1px solid rgba(0,0,0,0.08); }
+.task-card details summary { cursor: pointer; }
