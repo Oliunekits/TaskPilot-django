@@ -1,4 +1,5 @@
-# TaskPilot — Django Kanban Task Manager
+# TaskPilot — Django 
+Task Manager
 
 Fullstack pet-project built with **Django + HTML/CSS (Bootstrap) + HTMX**.
 Includes authentication, per-user data isolation, CRUD, Kanban board, and Dockerized setup.
